@@ -67,3 +67,28 @@ $rqData->occupancies = [ $occupancy ];
 
 $availRS = $apiClient->availability($rqData);
 ```
+
+### Iterate availability results
+
+After availabity method call can iterate results with iterator or can read with array form. 
+
+```php
+
+// Iterate all returned hotels with an Hotel object
+foreach ($availRS->hotels->iterator() as $hotelCode => $hotelData)
+{
+        // Get all hotel data (from Hotel object $hotelData)
+        
+        // Iterate all rooms of each hotel
+        foreach ($hotelData->iterator() as $roomCode => $roomData)
+        {
+                // Iterate all rate of each room
+                foreach($roomData->rateIterator() as $rateKey => $rateData)
+                {
+                        
+                }
+        }
+}
+
+```
+
