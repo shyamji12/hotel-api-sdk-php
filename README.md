@@ -17,6 +17,7 @@ composer require hotelbeds/hotel-api-sdk-php
 
 ### Include library using autoload PSR-0
 
+```php
 <?php
 require __DIR__ .'/vendor/autoload.php';
 
@@ -44,3 +45,4 @@ $occupancy->paxes = [ new Pax(Pax::AD, 30, "Mike", "Doe"), new Pax(Pax::AD, 27, 
 $rqData->occupancies = [ $occupancy ];
 
 $availRS = $apiClient->availability($rqData);
+```
