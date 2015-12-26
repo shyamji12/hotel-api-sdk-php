@@ -11,7 +11,18 @@ This softwared is licensed under the LGPL v2.1 license. Please refer to the file
 ## Install
 Install from console or PHPStorm Composer Utility:
 
+```bash
 composer require hotelbeds/hotel-api-sdk-php
+```
+## Testing
+
+In the directory unit tests can find different tests that can be run with phpunit. There are different sets of tests: Availability and bookings.
+
+```bash
+.\vendor\bin\phpunit --testsuite availability
+```
+
+This testsuite execute: status of API, make availability on PMI destination, select one room and do checkrate and booking.
 
 ## Using SDK
 
