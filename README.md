@@ -21,6 +21,16 @@ composer require hotelbeds/hotel-api-sdk-php
 <?php
 require __DIR__ .'/vendor/autoload.php';
 
+use hotelbeds\hotel_api_sdk\HotelApiClient;
+use hotelbeds\hotel_api_sdk\model\Destination;
+use hotelbeds\hotel_api_sdk\model\Occupancy;
+use hotelbeds\hotel_api_sdk\model\Pax;
+use hotelbeds\hotel_api_sdk\model\Rate;
+use hotelbeds\hotel_api_sdk\model\Stay;
+use hotelbeds\hotel_api_sdk\types\ApiVersion;
+use hotelbeds\hotel_api_sdk\types\ApiVersions;
+use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
+
 $reader = new Zend\Config\Reader\Ini();
 $config   = $reader->fromFile(__DIR__.'/HotelApiClient.ini');
 $cfgApi = $config["apiclient"];
