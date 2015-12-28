@@ -10,11 +10,14 @@ https://packagist.org/packages/hotelbeds/hotel-api-sdk-php
 This softwared is licensed under the LGPL v2.1 license. Please refer to the file LICENSE for specific details and more license and copyright information.
 
 ## Install
-Install from console or PHPStorm Composer Utility:
+Install from console with Composer utility:
 
 ```bash
 composer require hotelbeds/hotel-api-sdk-php
 ```
+
+Using Composer Dependency Manager with PHPStorm: http://blog.jetbrains.com/webide/2013/03/composer-support-in-phpstorm/
+
 ## Testing
 
 In the directory unit tests can find different tests that can be run with phpunit. There are different sets of tests: Availability and bookings.
