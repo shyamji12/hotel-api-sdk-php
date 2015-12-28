@@ -71,7 +71,7 @@ $availRS = $apiClient->availability($rqData);
 
 ### Iterate availability results
 
-After availabity method call can iterate results with iterator or can read with array form. 
+After availability method call can iterate results with iterator or can read with array form. 
 
 ```php
 
