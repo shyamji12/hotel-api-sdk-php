@@ -30,6 +30,26 @@ This testsuite execute: status of API, make availability on PMI destination, sel
 
 ## Using SDK
 
+### Overview
+
+The HotelApiClient class has different methods that implement the various calls HotelAPI:
+
+* Availability
+* CheckRate
+* BookingConfirm
+* BookingCancellation
+* BookingList
+* Status
+
+Each method has a parameter that is ApiHelper type, there are four possible types:
+
+* Availability
+* CheckRate
+* Booking
+* BookingList
+
+All responses each call can either iterate using PHP with objects or arrays. Internally converts the JSON response structure PHP associative arrays.
+
 ### Include library using autoload PSR-0
 
 ```php
