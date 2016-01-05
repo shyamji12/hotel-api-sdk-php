@@ -18,6 +18,11 @@ composer require hotelbeds/hotel-api-sdk-php
 
 Using Composer Dependency Manager with PHPStorm: http://blog.jetbrains.com/webide/2013/03/composer-support-in-phpstorm/
 
+This version is in dev-master@dev version and you need install with:
+
+```bash
+composer require "hotelbeds/hotel-api-sdk-php:dev-master@dev"
+```
 ## Testing
 
 In the directory unit tests can find different tests that can be run with phpunit. There are different sets of tests: Availability and bookings.
