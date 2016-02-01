@@ -130,7 +130,7 @@ try {
 
 After availability method call can iterate results with iterator or can read with array form.
 
-#### Get array form data response
+#### Get array from data response
 
 ```php
 $allResponse = $availRS->hotels->toArray();
