@@ -103,6 +103,24 @@ Can filter by list of hotels with hotel property:
 $rqData->hotels = [ "hotel" => [ 1067, 1070, 1506, ] ];
 ```
 
+### Exceptions 
+
+In this first version of the SDK there is an exception (HotelSDKException) to handle errors at the service level and to capture data sent by the server to audit the class AuditData:
+
+```php
+try {
+    $availRS = $apiClient->availability($rqData);
+} catch (\hotelbeds\hotel_api_sdk\types\HotelSDKException $e) {
+    $auditData = $e->getAuditData();
+    error_log( $e->getMessage() );
+    error_log( "Audit remote data = ".json_encode($e->getAuditData()->toArray()));
+    exit();
+} catch (Exception $e) {
+    error_log( $e->getMessage() );
+    exit();
+}
+```
+
 ### Iterate availability results
 
 After availability method call can iterate results with iterator or can read with array form. 
