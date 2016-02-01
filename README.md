@@ -97,6 +97,12 @@ $rqData->occupancies = [ $occupancy ];
 $availRS = $apiClient->availability($rqData);
 ```
 
+Can filter by list of hotels with hotel property:
+
+```php
+$rqData->hotels = [ "hotel" => [ 1067, 1070, 1506, ] ];
+```
+
 ### Iterate availability results
 
 After availability method call can iterate results with iterator or can read with array form. 
@@ -120,4 +126,3 @@ foreach ($availRS->hotels->iterator() as $hotelCode => $hotelData)
 }
 
 ```
-
