@@ -113,7 +113,7 @@ try {
 } catch (\hotelbeds\hotel_api_sdk\types\HotelSDKException $e) {
     $auditData = $e->getAuditData();
     error_log( $e->getMessage() );
-    error_log( "Audit remote data = ".json_encode($e->getAuditData()->toArray()));
+    error_log( "Audit remote data = ".json_encode($auditData->toArray()));
     exit();
 } catch (Exception $e) {
     error_log( $e->getMessage() );
