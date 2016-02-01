@@ -128,9 +128,35 @@ try {
 
 ### Iterate availability results
 
-After availability method call can iterate results with iterator or can read with array form. 
+After availability method call can iterate results with iterator or can read with array form.
 
-#### Availability check
+#### Get array form data response
+
+```php
+$allResponse = $availRS->hotels->toArray();
+``` 
+
+Returns this array structure:
+```php
+["hotels" => 
+        [ ["code" => 1067,
+           "name" => "Gran Melia Victoria",
+           ...
+           "rooms" => [
+                "code" => "DBL.VM",
+                "name" => "DOUBLE SEA VIEW",
+                "rates" => [ 
+                        ["rateKey" => "20160201|20160210|W|1|1067|DBL.VM|ID_B2B_24|RO|BARE|1~2~1|8|N@1102568804",
+                         "net"     => 9999.99,
+                        ],
+                        ...
+                ],
+           ]
+          ],
+          ...
+]           
+```
+#### Availability response check
 
 Before use iterators for iterate all results, can pre-check if is empty response with isEmpty() method, this method avoid instantiate all intermediate classes like: Rooms, Rates ...
 
@@ -139,7 +165,7 @@ if (!$availRS->isEmpty()) {
    echo "There are no results!"
 }
 ``` 
-#### Iteration model
+#### Using iterators
 ```php
 // Iterate all returned hotels with an Hotel object
 foreach ($availRS->hotels->iterator() as $hotelCode => $hotelData)
