@@ -107,8 +107,17 @@ $rqData->hotels = [ "hotel" => [ 1067, 1070, 1506, ] ];
 
 After availability method call can iterate results with iterator or can read with array form. 
 
-```php
+#### Availability check
 
+Before use iterators for iterate all results, can pre-check if is empty response with isEmpty() method, this method avoid instantiate all intermediate classes like: Rooms, Rates ...
+
+```php
+if (!$availRS->isEmpty()) {
+   echo "There are no results!"
+}
+``` 
+#### Iteration model
+```php
 // Iterate all returned hotels with an Hotel object
 foreach ($availRS->hotels->iterator() as $hotelCode => $hotelData)
 {
