@@ -126,7 +126,13 @@ try {
 }
 ```
 
-### Iterate availability results
+### Availability
+
+Send availability request:
+
+```php
+   $availRS = $apiClient->availability($rqData);
+```
 
 After availability method call can iterate results with iterator or can read with array form.
 
