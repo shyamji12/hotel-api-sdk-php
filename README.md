@@ -141,7 +141,7 @@ After availability method call can iterate results with iterator or can read wit
 Before use iterators for iterate all results, can pre-check if is empty response with isEmpty() method, this method avoid instantiate all intermediate classes like: Rooms, Rates ...
 
 ```php
-if (!$availRS->isEmpty()) {
+if ($availRS->isEmpty()) {
    echo "There are no results!"
 }
 ``` 
