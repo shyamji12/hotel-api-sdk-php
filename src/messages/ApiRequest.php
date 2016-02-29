@@ -14,11 +14,32 @@ use Zend\Http\Request;
 use Zend\Uri\Http;
 use Zend\Stdlib\Parameters;
 
+/**
+ * Class ApiRequest This is abstract request class define how prepare final HTTP Request
+ * @package hotelbeds\hotel_api_sdk\messages
+ */
 abstract class ApiRequest implements ApiCallTypes
 {
-    protected $request, $baseUri;
+    /**
+     * @var Request Contains a http request
+     */
+    protected $request;
+
+    /**
+     * @var Http Contains final URL with endpoint and extra parameters if is needed
+     */
+    protected $baseUri;
+
+    /**
+     * @var ApiUri Contains well formatted URI of call
+     */
     private $dataRQ;
 
+    /**
+     * ApiRequest constructor.
+     * @param ApiUri $baseUri Base URI of service
+     * @param string $operation Endpoint name of operation
+     */
     public function __construct(ApiUri $baseUri, $operation)
     {
         $this->request = new Request();
@@ -26,11 +47,19 @@ abstract class ApiRequest implements ApiCallTypes
         $this->baseUri->setPath($baseUri->getPath()."/".$operation);
     }
 
+    /**
+     * @param ApiHelper $dataRQ Set data request to request
+     */
     protected function setDataRequest(ApiHelper $dataRQ)
     {
         $this->dataRQ = $dataRQ;
     }
 
+    /**
+     * @param string $apiKey API Key of client
+     * @param string $signature Computed signature for made this call
+     * @return Request Return well constructed HTTP Request
+     */
     public function prepare($apiKey, $signature)
     {
         if (empty($apiKey) || empty($signature))
