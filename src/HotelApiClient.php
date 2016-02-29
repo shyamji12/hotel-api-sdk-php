@@ -23,12 +23,19 @@
 
 namespace hotelbeds\hotel_api_sdk;
 
-use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 use hotelbeds\hotel_api_sdk\messages\StatusRS;
 
+use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
+use hotelbeds\hotel_api_sdk\helpers\Availability;
+
 use hotelbeds\hotel_api_sdk\messages\CheckRateRS;
+use hotelbeds\hotel_api_sdk\helpers\CheckRate;
+
 use hotelbeds\hotel_api_sdk\messages\BookingConfirmRS;
+use hotelbeds\hotel_api_sdk\helpers\Booking;
+
 use hotelbeds\hotel_api_sdk\messages\BookingListRS;
+use hotelbeds\hotel_api_sdk\helpers\BookingList;
 
 use hotelbeds\hotel_api_sdk\model\AuditData;
 use hotelbeds\hotel_api_sdk\types\ApiVersion;
@@ -40,20 +47,50 @@ use Zend\Http\Request;
 use Zend\Uri\UriFactory;
 
 /**
- * Class HotelApiClient
+ * Class HotelApiClient. This is the main class of the SDK that makes client-api hotel. Mainly this class is used to make all calls to the hotel-api webservice using ApiHelper classes
  * @package hotelbeds\hotel_api_sdk
- * @method StatusRS status Get status of hotel-api service
- * @method AvailabilityRS availability Do availability accomodation request
- * @method CheckRateRS checkRate Check different room rates for booking
- * @method BookingConfirmRS bookingConfirm Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
- * @method BookingListRS bookingList To get a list of bookings
+ * @method StatusRS status() Get status of hotel-api service
+ * @method AvailabilityRS availability(Availability $availData) Do availability accommodation request
+ * @method CheckRateRS checkRate(CheckRate $rateData) Check different room rates for booking
+ * @method BookingConfirmRS bookingConfirm(Booking $bookingData) Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
+ * @method BookingCancellationRS bookingCancellation( $bookingId ) Method can cancel confirmed booking
+ * @method BookingListRS bookingList( BookingList $bookData ) To get a list of bookings
  */
 class HotelApiClient
 {
-    private $apiKey, $sharedSecret;
-    private $httpClient, $apiUri;
+    /**
+     * @var ApiUri Well formatted URI of service
+     */
+    private $apiUri;
+
+    /**
+     * @var string Stores locally client api key
+     */
+    private $apiKey;
+
+    /**
+     * @var string Stores locally client shared secret
+     */
+    private $sharedSecret;
+
+    /**
+     * @var Client HTTPClient object
+     */
+    private $httpClient;
+
+    /**
+     * @var Request Last sent request
+     */
     private $lastRequest;
 
+    /**
+     * HotelApiClient Constructor they initialize SDK Client.
+     * @param string $url Base URL of hotel-api service.
+     * @param string $apiKey Client APIKey
+     * @param string $sharedSecret Shared secret
+     * @param ApiVersion $version Version of HotelAPI Interface
+     * @param int $timeout HTTP Client timeout
+     */
     public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30)
     {
         $this->lastRequest = null;
@@ -72,9 +109,8 @@ class HotelApiClient
     /**
      * @param $sdkMethod string Method request name.
      * @param $args array only specify a ApiHelper class type for encapsulate request arguments
-     * @return mixed Class of response. Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS
+     * @return ApiResponse Class of response. Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS
      * @throws HotelSDKException Specific exception of call
-     * @throws \Exception General exception for not implemented requested method
      */
 
     public function __call($sdkMethod, array $args=null)
@@ -92,12 +128,12 @@ class HotelApiClient
         return new $sdkClassRS($this->callApi($req));
     }
 
-
     /**
-     * @param ApiRequest $request API Abstract request helper for contruct request
-     * @return mixed Response data into array format
-     * @throws HotelSDKException
-     * @throws \Exception
+     * Generic API Call, this is a internal used method for sending all requests to webservice and parse
+     * JSON response and transforms to PHP-Array object.
+     * @param ApiRequest $request API Abstract request helper for construct request
+     * @return array Response data into PHP Array structure
+     * @throws HotelSDKException Calling exception, can capture remote server auditdata if exists.
      */
     private function callApi(ApiRequest $request)
     {

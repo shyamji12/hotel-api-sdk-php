@@ -37,6 +37,9 @@ use hotelbeds\hotel_api_sdk\messages\BookingListRS;
 
 class HotelApiClientTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var HotelApiClient
+     */
     private $apiClient;
 
     protected function setUp()
@@ -50,6 +53,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
                                               $cfgApi["sharedsecret"],
                                               new ApiVersion(ApiVersions::V1_0),
                                               $cfgApi["timeout"]);
+
     }
 
     /**
