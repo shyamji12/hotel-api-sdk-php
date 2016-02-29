@@ -71,8 +71,8 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
     {
         $rqData = new \hotelbeds\hotel_api_sdk\helpers\Availability();
         $rqData->stay = new Stay(
-            DateTime::createFromFormat("Y-m-d", "2016-02-01"),
-            DateTime::createFromFormat("Y-m-d", "2016-02-10"));
+            DateTime::createFromFormat("Y-m-d", "2016-04-01"),
+            DateTime::createFromFormat("Y-m-d", "2016-04-10"));
 
         $rqData->destination = new Destination("PMI");
         $occupancy = new Occupancy();
@@ -108,6 +108,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
             foreach ($hotelData->iterator() as $roomCode => $roomData)
             {
                 $this->assertNotEmpty($roomData->code);
+                echo $roomCode."\n";
 
                 foreach($roomData->rateIterator() as $rateKey => $rateData)
                 {

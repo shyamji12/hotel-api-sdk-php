@@ -47,11 +47,10 @@ use Zend\Uri\UriFactory;
  * @method CheckRateRS checkRate Check different room rates for booking
  * @method BookingConfirmRS bookingConfirm Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
  * @method BookingListRS bookingList To get a list of bookings
- *
  */
 class HotelApiClient
 {
-    private $apiKey, $signature;
+    private $apiKey, $sharedSecret;
     private $httpClient, $apiUri;
     private $lastRequest;
 
@@ -60,7 +59,8 @@ class HotelApiClient
         $this->lastRequest = null;
 
         $this->apiKey = trim($apiKey);
-        $this->signature = hash("sha256", $apiKey.trim($sharedSecret).time());
+        $this->sharedSecret = trim($sharedSecret);
+
         $this->httpClient = new Client();
         $this->httpClient->setOptions(["timeout" => $timeout]);
 
@@ -68,7 +68,6 @@ class HotelApiClient
         $this->apiUri = UriFactory::factory($url);
         $this->apiUri->prepare($version);
     }
-
 
     /**
      * @param $sdkMethod string Method request name.
@@ -78,15 +77,15 @@ class HotelApiClient
      * @throws \Exception General exception for not implemented requested method
      */
 
-    public function __call($sdkMethod, $args)
+    public function __call($sdkMethod, array $args=null)
     {
         $sdkClassRQ = "hotelbeds\\hotel_api_sdk\\messages\\".$sdkMethod."RQ";
         $sdkClassRS = "hotelbeds\\hotel_api_sdk\\messages\\".$sdkMethod."RS";
 
         if (!class_exists($sdkClassRQ) && !class_exists($sdkClassRS))
-            throw new \Exception("$sdkClassRQ or $sdkClassRS not implemented in SDK");
+            throw new HotelSDKException("$sdkClassRQ or $sdkClassRS not implemented in SDK");
 
-        if ($args !== null)
+        if ($args !== null && count($args) > 0)
             $req = new $sdkClassRQ($this->apiUri, $args[0]);
         else $req = new $sdkClassRQ($this->apiUri);
 
@@ -103,14 +102,15 @@ class HotelApiClient
     private function callApi(ApiRequest $request)
     {
         try {
-            $this->lastRequest = $request->prepare($this->apiKey, $this->signature);
+            $signature = hash("sha256", $this->apiKey.$this->sharedSecret.time());
+            $this->lastRequest = $request->prepare($this->apiKey, $signature);
             $response = $this->httpClient->send($this->lastRequest);
         } catch (\Exception $e) {
             throw new HotelSDKException("Error accessing API: " . $e->getMessage());
         }
 
         if ($response->getStatusCode() === 403)
-            throw new \Exception("Not authorized, review your api-key and secret!");
+            throw new HotelSDKException("Not authorized, review your api-key and secret!");
 
         if ($response->getStatusCode() !== 200) {
            $auditData = null;$message="";

@@ -42,7 +42,9 @@ abstract class DataContainer
         if (!empty($this->validFields) && !array_key_exists($field, $this->validFields))
             throw new FieldNotValid("$field not valid for this model");
 
-        return $this->fields[$field];
+        if (array_key_exists($field, $this->fields))
+            return $this->fields[$field];
+        return null;
     }
 
     /**
