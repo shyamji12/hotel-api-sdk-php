@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/hotelbeds.html">\hotelbeds</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">138</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1620823680"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1620823680" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-254208441"></a>
+                                <a href="../namespaces/hotelbeds.html" style="margin-left: 30px; padding-left: 0">hotelbeds</a>
+            </div>
+            <div id="namespace-254208441" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1249171130"></a>
+                                <a href="../namespaces/hotelbeds.hotel_api_sdk.html" style="margin-left: 30px; padding-left: 0">hotel_api_sdk</a>
+            </div>
+            <div id="namespace-1249171130" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1789519152"></a>
+                                <a href="../namespaces/hotelbeds.hotel_api_sdk.generic.html" style="margin-left: 30px; padding-left: 0">generic</a>
+            </div>
+            <div id="namespace-1789519152" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.generic.DataContainer.html">DataContainer</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.generic.FieldNotValid.html">FieldNotValid</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-980145494"></a>
+                                <a href="../namespaces/hotelbeds.hotel_api_sdk.helpers.html" style="margin-left: 30px; padding-left: 0">helpers</a>
+            </div>
+            <div id="namespace-980145494" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.helpers.ApiHelper.html">ApiHelper</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.helpers.Availability.html">Availability</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.helpers.Booking.html">Booking</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.helpers.BookingList.html">BookingList</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.helpers.CheckRate.html">CheckRate</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-453923787"></a>
+                                <a href="../namespaces/hotelbeds.hotel_api_sdk.messages.html" style="margin-left: 30px; padding-left: 0">messages</a>
+            </div>
+            <div id="namespace-453923787" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/hotelbeds.hotel_api_sdk.messages.ApiCallTypes.html">ApiCallTypes</a></li>
+                                                                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.ApiRequest.html">ApiRequest</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.ApiResponse.html">ApiResponse</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.AvailabilityRQ.html">AvailabilityRQ</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.AvailabilityRS.html">AvailabilityRS</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.BookingCancellationRQ.html">BookingCancellationRQ</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.BookingCancellationRS.html">BookingCancellationRS</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.BookingConfirmRQ.html">BookingConfirmRQ</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.BookingConfirmRS.html">BookingConfirmRS</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.BookingListRQ.html">BookingListRQ</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.BookingListRS.html">BookingListRS</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.CheckRateRQ.html">CheckRateRQ</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.CheckRateRS.html">CheckRateRS</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.FieldNotExists.html">FieldNotExists</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.StatusRQ.html">StatusRQ</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.messages.StatusRS.html">StatusRS</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1963788055"></a>
+                                <a href="../namespaces/hotelbeds.hotel_api_sdk.model.html" style="margin-left: 30px; padding-left: 0">model</a>
+            </div>
+            <div id="namespace-1963788055" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.ApiModel.html">ApiModel</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.AuditData.html">AuditData</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Booking.html">Booking</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.BookingIterator.html">BookingIterator</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.BookingRoom.html">BookingRoom</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Bookings.html">Bookings</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.CancellationPoliciesIterator.html">CancellationPoliciesIterator</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.CancellationPolicy.html">CancellationPolicy</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Destination.html">Destination</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Geolocation.html">Geolocation</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Holder.html">Holder</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Hotel.html">Hotel</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.HotelIterator.html">HotelIterator</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Hotels.html">Hotels</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.KeywordsFilter.html">KeywordsFilter</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Occupancy.html">Occupancy</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Pax.html">Pax</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.PaymentData.html">PaymentData</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Promotion.html">Promotion</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.PromotionsIterator.html">PromotionsIterator</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Rate.html">Rate</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.RateIterator.html">RateIterator</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Room.html">Room</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.RoomIterator.html">RoomIterator</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Stay.html">Stay</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Tax.html">Tax</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.Taxes.html">Taxes</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.model.TaxesIterator.html">TaxesIterator</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-589340099"></a>
+                                <a href="../namespaces/hotelbeds.hotel_api_sdk.types.html" style="margin-left: 30px; padding-left: 0">types</a>
+            </div>
+            <div id="namespace-589340099" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/hotelbeds.hotel_api_sdk.types.ApiVersions.html">ApiVersions</a></li>
+                                                                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.types.ApiUri.html">ApiUri</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.types.ApiVersion.html">ApiVersion</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.types.HotelApiService.html">HotelApiService</a></li>
+                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.types.HotelSDKException.html">HotelSDKException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html">HotelApiClient</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/hotelbeds.hotel_api_sdk.html">\hotelbeds\hotel_api_sdk</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\hotelbeds\hotel_api_sdk</small>HotelApiClient</h1>
+                    <p><em>Class HotelApiClient. This is the main class of the SDK that makes client-api hotel. Mainly this class is used to make all calls to the hotel-api webservice using ApiHelper classes</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method___call" class="">__call()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_getLastRequest" class="">getLastRequest()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_status" class="">status()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_availability" class="">availability()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_checkRate" class="">checkRate()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_bookingConfirm" class="">bookingConfirm()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_bookingCancellation" class="">bookingCancellation()</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_bookingList" class="">bookingList()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#method_callApi" class="">callApi()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#property_apiUri" class="">$apiUri</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#property_apiKey" class="">$apiKey</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#property_sharedSecret" class="">$sharedSecret</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#property_httpClient" class="">$httpClient</a><br />
+                                                                    <a href="../classes/hotelbeds.hotel_api_sdk.HotelApiClient.html#property_lastRequest" class="">$lastRequest</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/HotelApiClient.html"><div class="path-wrapper">HotelApiClient.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">hotelbeds\hotel_api_sdk</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\hotelbeds\hotel_api_sdk\HotelApiClient</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_apiUri" name="property_apiUri" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$apiUri</h3>
+                <pre class="signature">$apiUri : \hotelbeds\hotel_api_sdk\ApiUri</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \hotelbeds\hotel_api_sdk\ApiUri
+                &mdash; Well formatted URI of service                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_apiKey" name="property_apiKey" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$apiKey</h3>
+                <pre class="signature">$apiKey : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Stores locally client api key                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_sharedSecret" name="property_sharedSecret" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$sharedSecret</h3>
+                <pre class="signature">$sharedSecret : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; Stores locally client shared secret                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_httpClient" name="property_httpClient" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$httpClient</h3>
+                <pre class="signature">$httpClient : \Zend\Http\Client</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Zend\Http\Client
+                &mdash; HTTPClient object                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_lastRequest" name="property_lastRequest" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$lastRequest</h3>
+                <pre class="signature">$lastRequest : \Zend\Http\Request</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \Zend\Http\Request
+                &mdash; Last sent request                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$url</span>, string  <span class="argument">$apiKey</span>, string  <span class="argument">$sharedSecret</span>, \hotelbeds\hotel_api_sdk\types\ApiVersion  <span class="argument">$version</span>, integer  <span class="argument">$timeout = 30</span>) </pre>
+                <p><em>HotelApiClient Constructor they initialize SDK Client.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$url </td>
+                                <td><p>Base URL of hotel-api service.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$apiKey </td>
+                                <td><p>Client APIKey</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>string</td>
+                                <td>$sharedSecret </td>
+                                <td><p>Shared secret</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/hotelbeds.hotel_api_sdk.types.ApiVersion.html">\hotelbeds\hotel_api_sdk\types\ApiVersion</a></td>
+                                <td>$version </td>
+                                <td><p>Version of HotelAPI Interface</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$timeout </td>
+                                <td><p>HTTP Client timeout</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___call" name="method___call" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__call()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__call(  <span class="argument">$sdkMethod</span>,   <span class="argument">$args = null</span>) : \hotelbeds\hotel_api_sdk\ApiResponse</pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$sdkMethod </td>
+                                <td><p>string Method request name.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td></td>
+                                <td>$args </td>
+                                <td><p>array only specify a ApiHelper class type for encapsulate request arguments</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\hotelbeds\hotel_api_sdk\types\HotelSDKException</dt>
+                            <dd><p>Specific exception of call</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\ApiResponse
+                                            &mdash; <p>Class of response. Each call type returns response class: For example AvailabilityRQ returns AvailabilityRS</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getLastRequest" name="method_getLastRequest" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getLastRequest()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getLastRequest() : \Zend\Http\Request</pre>
+                <p><em></em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \Zend\Http\Request
+                                            &mdash; <p>getLastRequest Returns entire raw request</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_status" name="method_status" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">status()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">status() : \hotelbeds\hotel_api_sdk\messages\StatusRS</pre>
+                <p><em></em></p>
+                <p>Get status of hotel-api service</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\messages\StatusRS
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_availability" name="method_availability" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">availability()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">availability(\Availability  <span class="argument">$availData</span>) : \hotelbeds\hotel_api_sdk\messages\AvailabilityRS</pre>
+                <p><em></em></p>
+                <p>Do availability accommodation request</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Availability</td>
+                                <td>$availData </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\messages\AvailabilityRS
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_checkRate" name="method_checkRate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">checkRate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">checkRate(\CheckRate  <span class="argument">$rateData</span>) : \hotelbeds\hotel_api_sdk\messages\CheckRateRS</pre>
+                <p><em></em></p>
+                <p>Check different room rates for booking</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\CheckRate</td>
+                                <td>$rateData </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\messages\CheckRateRS
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_bookingConfirm" name="method_bookingConfirm" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">bookingConfirm()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">bookingConfirm(\Booking  <span class="argument">$bookingData</span>) : \hotelbeds\hotel_api_sdk\messages\BookingConfirmRS</pre>
+                <p><em></em></p>
+                <p>Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\Booking</td>
+                                <td>$bookingData </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\messages\BookingConfirmRS
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_bookingCancellation" name="method_bookingCancellation" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">bookingCancellation()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">bookingCancellation(mixed  <span class="argument">$bookingId</span>) : \hotelbeds\hotel_api_sdk\BookingCancellationRS</pre>
+                <p><em></em></p>
+                <p>Method can cancel confirmed booking</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$bookingId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\BookingCancellationRS
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_bookingList" name="method_bookingList" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">bookingList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">bookingList(\BookingList  <span class="argument">$bookData</span>) : \hotelbeds\hotel_api_sdk\messages\BookingListRS</pre>
+                <p><em></em></p>
+                <p>To get a list of bookings</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\BookingList</td>
+                                <td>$bookData </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    \hotelbeds\hotel_api_sdk\messages\BookingListRS
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_callApi" name="method_callApi" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">callApi()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">callApi(\hotelbeds\hotel_api_sdk\messages\ApiRequest  <span class="argument">$request</span>) : array</pre>
+                <p><em>Generic API Call, this is a internal used method for sending all requests to webservice and parse
+JSON response and transforms to PHP-Array object.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/hotelbeds.hotel_api_sdk.messages.ApiRequest.html">\hotelbeds\hotel_api_sdk\messages\ApiRequest</a></td>
+                                <td>$request </td>
+                                <td><p>API Abstract request helper for construct request</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\hotelbeds\hotel_api_sdk\types\HotelSDKException</dt>
+                            <dd><p>Calling exception, can capture remote server auditdata if exists.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>Response data into PHP Array structure</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">HotelApiClient.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/HotelApiClient.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/hotelbeds.html">\hotelbeds</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 1st, 2016 at 03:25.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
