@@ -9,6 +9,10 @@ https://packagist.org/packages/hotelbeds/hotel-api-sdk-php
 ## License
 This softwared is licensed under the LGPL v2.1 license. Please refer to the file LICENSE for specific details and more license and copyright information.
 
+## API Documentation
+
+http://hotelbeds-sdk.github.io/hotel-api-sdk-php/
+
 ## Install
 Install from console with Composer utility: https://getcomposer.org/download/
 
