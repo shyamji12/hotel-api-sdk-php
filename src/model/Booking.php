@@ -15,6 +15,10 @@ namespace hotelbeds\hotel_api_sdk\model;
  */
 class Booking extends ApiModel
 {
+    /**
+     * Booking constructor.
+     * @param array|null $data
+     */
     public function __construct(array $data=null)
     {
         $this->validFields = [

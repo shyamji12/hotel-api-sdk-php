@@ -12,8 +12,17 @@ use hotelbeds\hotel_api_sdk\helpers\Booking;
 use hotelbeds\hotel_api_sdk\types\ApiUri;
 use Zend\Http\Request;
 
+/**
+ * Class BookingConfirmRQ
+ * @package hotelbeds\hotel_api_sdk\messages
+ */
 class BookingConfirmRQ extends ApiRequest
 {
+    /**
+     * BookingConfirmRQ constructor.
+     * @param ApiUri $baseUri
+     * @param Booking $bookingDataRQ
+     */
     public function __construct(ApiUri $baseUri, Booking $bookingDataRQ)
     {
         parent::__construct($baseUri, self::BOOKING);

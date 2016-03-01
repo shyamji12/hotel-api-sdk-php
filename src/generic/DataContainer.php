@@ -8,6 +8,10 @@
 
 namespace hotelbeds\hotel_api_sdk\generic;
 
+/**
+ * Class FieldNotValid. No valid field exception.
+ * @package hotelbeds\hotel_api_sdk\generic
+ */
 class FieldNotValid extends \Exception{}
 
 /**
@@ -28,6 +32,7 @@ abstract class DataContainer
     protected $fields = [];
 
     /**
+     * Setter magical method
      * @param $field string Name of field
      * @param $value mixed Value of field
      * @throws FieldNotValid Rise if field is not defined into validFields.
@@ -55,6 +60,12 @@ abstract class DataContainer
         $this->fields[$field] = $value;
     }
 
+    /**
+     * Getter magical method
+     * @param $field Field name
+     * @return mixed Return a value of field
+     * @throws FieldNotValid If field does exists
+     */
     public function __get($field)
     {
         if (!empty($this->validFields) && !array_key_exists($field, $this->validFields))
@@ -70,7 +81,6 @@ abstract class DataContainer
      *
      * @return array Data fields array structure
      */
-
     public function toArray()
     {
         return array_map(function($item) {
