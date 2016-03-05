@@ -64,7 +64,7 @@ All responses each call can either iterate using PHP with objects or arrays. Int
 The SDK uses classes with magic properties and methods to document this feature use the standard @property which is used is explained here: http://manual.phpdoc.org/HTMLSmartyConverter/PHP/phpDocumentor/tutorial_tags.property.pkg.html
 The different calls made SDK are magical methods also documented by the same method, and depend on the IDE to use if you have visibility of the same when using the auto-complete. The SDK has been tested and certified with the IDE PhpStorm but the user can use the always prefer and when you consider that the auto-complete will work or not depending on whether it supports "@property" or not.
 
-### Include library using autoload PSR-4
+### Include library using autoload [PSR-4](http://www.php-fig.org/psr/psr-4/)
 
 ```php
 <?php
