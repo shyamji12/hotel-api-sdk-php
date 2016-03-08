@@ -24,6 +24,7 @@ class Booking extends ApiHelper
     public function __construct()
     {
         $this->validFields = [
+            "language" => "string",
             "holder" => "hotelbeds\\hotel_api_sdk\\model\\Holder",
             "rooms" => "array",
             "clientReference" => "string",
