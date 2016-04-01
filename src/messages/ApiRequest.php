@@ -69,7 +69,8 @@ abstract class ApiRequest implements ApiCallTypes
         $this->request->getHeaders()->addHeaders([
             'Api-Key' => $apiKey,
             'X-Signature' => $signature,
-            'Accept' => 'application/json'
+            'Accept' => 'application/json',
+            'Accept-Charset' => 'utf-8'
         ]);
 
         if (!empty($this->dataRQ)) {

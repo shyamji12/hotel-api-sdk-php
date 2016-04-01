@@ -47,8 +47,8 @@ class BookingApiTest extends PHPUnit_Framework_TestCase
     public function testBookingList()
     {
         $rqBookingLst = new \hotelbeds\hotel_api_sdk\helpers\BookingList();
-        $rqBookingLst->start = DateTime::createFromFormat("Y-m-d", "2016-02-01");
-        $rqBookingLst->end = DateTime::createFromFormat("Y-m-d", "2016-02-10");
+        $rqBookingLst->start = DateTime::createFromFormat("Y-m-d", "2016-04-01");
+        $rqBookingLst->end = DateTime::createFromFormat("Y-m-d", "2016-04-30");
         $rqBookingLst->from = 1;
         $rqBookingLst->to = 25;
         return $this->apiClient->bookinglist($rqBookingLst);

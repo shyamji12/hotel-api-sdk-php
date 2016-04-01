@@ -186,6 +186,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
     {
            $rqBookingConfirm = new \hotelbeds\hotel_api_sdk\helpers\Booking();
            $rqBookingConfirm->holder = new \hotelbeds\hotel_api_sdk\model\Holder("Tomeu TEST", "Capo TEST");
+           $rqBookingConfirm->language="CAS";
 
            // Use this iterator for multiple pax distributions, this example have one only pax distribution.
 
