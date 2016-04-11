@@ -26,6 +26,7 @@ use hotelbeds\hotel_api_sdk\HotelApiClient;
 use hotelbeds\hotel_api_sdk\messages\BookingConfirmRS;
 use hotelbeds\hotel_api_sdk\messages\CheckRateRS;
 use hotelbeds\hotel_api_sdk\model\Destination;
+use hotelbeds\hotel_api_sdk\model\Geolocation;
 use hotelbeds\hotel_api_sdk\model\Occupancy;
 use hotelbeds\hotel_api_sdk\model\Pax;
 use hotelbeds\hotel_api_sdk\model\Rate;
@@ -34,6 +35,7 @@ use hotelbeds\hotel_api_sdk\types\ApiVersion;
 use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 use hotelbeds\hotel_api_sdk\messages\BookingListRS;
+
 
 class HotelApiClientTest extends PHPUnit_Framework_TestCase
 {
@@ -75,10 +77,19 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
     {
         $rqData = new \hotelbeds\hotel_api_sdk\helpers\Availability();
         $rqData->stay = new Stay(
-            DateTime::createFromFormat("Y-m-d", "2016-04-01"),
-            DateTime::createFromFormat("Y-m-d", "2016-04-10"));
-        
-        $rqData->destination = new Destination("PMI");
+            DateTime::createFromFormat("Y-m-d", "2016-05-01"),
+            DateTime::createFromFormat("Y-m-d", "2016-05-10"));
+
+        //$rqData->destination = new Destination("PMI");
+        $geolocation = new Geolocation();
+        $geolocation->latitude = -32.949815300;
+        $geolocation->longitude= -60.654034800;
+        $geolocation->radius= 5.0;
+        $geolocation->unit= Geolocation::KM;
+
+        $rqData->geolocation = $geolocation;
+
+            
         $occupancy = new Occupancy();
         $occupancy->adults = 2;
         $occupancy->children = 1;
