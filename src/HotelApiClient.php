@@ -49,12 +49,12 @@ use Zend\Uri\UriFactory;
 /**
  * Class HotelApiClient. This is the main class of the SDK that makes client-api hotel. Mainly this class is used to make all calls to the hotel-api webservice using ApiHelper classes
  * @package hotelbeds\hotel_api_sdk
- * @method StatusRS status() Get status of hotel-api service
- * @method AvailabilityRS availability(Availability $availData) Do availability accommodation request
- * @method CheckRateRS checkRate(CheckRate $rateData) Check different room rates for booking
- * @method BookingConfirmRS bookingConfirm(Booking $bookingData) Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
- * @method BookingCancellationRS bookingCancellation( $bookingId ) Method can cancel confirmed booking
- * @method BookingListRS bookingList( BookingList $bookData ) To get a list of bookings
+ * @method StatusRS Status() Get status of hotel-api service
+ * @method AvailabilityRS Availability(Availability $availData) Do availability accommodation request
+ * @method CheckRateRS CheckRate(CheckRate $rateData) Check different room rates for booking
+ * @method BookingConfirmRS BookingConfirm(Booking $bookingData) Method allows confirmation of the rate keys selected.  There is an option of confirming more than one rate key for the same hotel/room/board.
+ * @method BookingCancellationRS BookingCancellation( $bookingId ) Method can cancel confirmed booking
+ * @method BookingListRS BookingList( BookingList $bookData ) To get a list of bookings
  */
 class HotelApiClient
 {
@@ -99,7 +99,9 @@ class HotelApiClient
         $this->sharedSecret = trim($sharedSecret);
 
         $this->httpClient = new Client();
-        $this->httpClient->setOptions(["timeout" => $timeout]);
+        $this->httpClient->setOptions(
+                ["adapter" => "Zend\Http\Client\Adapter\Curl",
+                 "timeout" => $timeout]);
 
         UriFactory::registerScheme("https","hotelbeds\\hotel_api_sdk\\types\\ApiUri");
         $this->apiUri = UriFactory::factory($url);

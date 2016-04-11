@@ -103,7 +103,7 @@ $occupancy->rooms = 1;
 $occupancy->paxes = [ new Pax(Pax::AD, 30, "Mike", "Doe"), new Pax(Pax::AD, 27, "Jane", "Doe"), new Pax(Pax::CH, 8, "Mack", "Doe") ];
 $rqData->occupancies = [ $occupancy ];
 
-$availRS = $apiClient->availability($rqData);
+$availRS = $apiClient->Availability($rqData);
 ```
 
 Can filter by list of hotels with hotel property:
@@ -118,7 +118,7 @@ In this first version of the SDK there is an exception (HotelSDKException) to ha
 
 ```php
 try {
-    $availRS = $apiClient->availability($rqData);
+    $availRS = $apiClient->Availability($rqData);
 } catch (\hotelbeds\hotel_api_sdk\types\HotelSDKException $e) {
     $auditData = $e->getAuditData();
     error_log( $e->getMessage() );
@@ -135,7 +135,7 @@ try {
 Send availability request:
 
 ```php
-   $availRS = $apiClient->availability($rqData);
+   $availRS = $apiClient->Availability($rqData);
 ```
 
 After availability method call can iterate results with iterator or can read with array form.

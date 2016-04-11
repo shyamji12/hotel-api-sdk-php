@@ -62,7 +62,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
 
     public function testStatus()
     {
-        $this->assertEquals($this->apiClient->status()->status,"OK");
+        $this->assertEquals($this->apiClient->Status()->status,"OK");
     }
 
     /**
@@ -77,7 +77,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
         $rqData->stay = new Stay(
             DateTime::createFromFormat("Y-m-d", "2016-04-01"),
             DateTime::createFromFormat("Y-m-d", "2016-04-10"));
-
+        
         $rqData->destination = new Destination("PMI");
         $occupancy = new Occupancy();
         $occupancy->adults = 2;
@@ -87,7 +87,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
         $occupancy->paxes = [ new Pax(Pax::AD, 30, "Miquel", "Fiol"), new Pax(Pax::AD, 27, "Margalida", "Soberats"), new Pax(Pax::CH, 8, "Josep", "Fiol") ];
         $rqData->occupancies = [ $occupancy ];
 
-        return $this->apiClient->availability($rqData);
+        return $this->apiClient->Availability($rqData);
     }
 
     /**
@@ -230,7 +230,7 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
            }
 
            try {
-               $confirmRS = $this->apiClient->bookingConfirm($rqBookingConfirm);
+               $confirmRS = $this->apiClient->BookingConfirm($rqBookingConfirm);
                return $confirmRS;
            } catch (\hotelbeds\hotel_api_sdk\types\HotelSDKException $e) {
                echo "\n".$e->getMessage()."\n";
