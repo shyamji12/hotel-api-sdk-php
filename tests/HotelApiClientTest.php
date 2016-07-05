@@ -76,9 +76,11 @@ class HotelApiClientTest extends PHPUnit_Framework_TestCase
     public function testAvailRQ()
     {
         $rqData = new \hotelbeds\hotel_api_sdk\helpers\Availability();
-        $rqData->stay = new Stay(
-            DateTime::createFromFormat("Y-m-d", "2016-05-01"),
-            DateTime::createFromFormat("Y-m-d", "2016-05-10"));
+        $startDate = new DateTime();
+        $startDate->modify('+'.rand(1,30).' day');
+        $endDate = clone $startDate;
+        $endDate->modify('+'.rand(1,10).' day');
+        $rqData->stay = new Stay($startDate,$endDate);
 
         //$rqData->destination = new Destination("PMI");
         $geolocation = new Geolocation();
