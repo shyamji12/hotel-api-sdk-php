@@ -5,6 +5,8 @@ Hotelbeds SDK for PHP is a set of utilities whose main goal is to help in the de
 This is a composer library available on packagist.org repository. 
 
 https://packagist.org/packages/hotelbeds/hotel-api-sdk-php
+## Step by Step Guide
+https://github.com/hotelbeds-sdk/hotel-api-sdk-php/wiki/Step-by-step-guide-to-start-from-scratch
 
 ## License
 This softwared is licensed under the LGPL v2.1 license. Please refer to the file LICENSE for specific details and more license and copyright information.
