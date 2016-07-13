@@ -147,17 +147,23 @@ class HotelApiClient
             throw new HotelSDKException("Error accessing API: " . $e->getMessage());
         }
 
-        if ($response->getStatusCode() === 403)
-            throw new HotelSDKException("Not authorized, review your api-key and secret!");
-
         if ($response->getStatusCode() !== 200) {
-           $auditData = null;$message="";
+           $auditData = null;$message=''; $errorResponse = null;
            if ($response->getBody() !== null) {
-                $errorResponse = \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
-                $auditData = new AuditData($errorResponse["auditData"]);
-                $message = $errorResponse["error"]["message"];
+               try {
+                   $errorResponse = \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
+                   $auditData = new AuditData($errorResponse["auditData"]);
+                   $message = $errorResponse["error"]["message"];
+               } catch (\Exception $e) {
+                  echo "Error decode API response: " . $e->getMessage();
+               }
            }
-           throw new HotelSDKException($response->getReasonPhrase().". ".$message, $auditData);
+            if($errorResponse!==null){
+                throw new HotelSDKException($response->getReasonPhrase().': '.$message, $auditData);
+            }else{
+                throw new HotelSDKException($response->getReasonPhrase().': '.$response->getContent());
+            }
+
         }
 
         return \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
