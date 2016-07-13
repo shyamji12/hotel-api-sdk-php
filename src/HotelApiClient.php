@@ -155,15 +155,10 @@ class HotelApiClient
                    $auditData = new AuditData($errorResponse["auditData"]);
                    $message = $errorResponse["error"]["message"];
                } catch (\Exception $e) {
-                  echo "Error decode API response: " . $e->getMessage();
+                   throw new HotelSDKException($response->getReasonPhrase().': '.$response->getBody());
                }
            }
-            if($errorResponse!==null){
-                throw new HotelSDKException($response->getReasonPhrase().': '.$message, $auditData);
-            }else{
-                throw new HotelSDKException($response->getReasonPhrase().': '.$response->getContent());
-            }
-
+            throw new HotelSDKException($response->getReasonPhrase().': '.$message, $auditData);
         }
 
         return \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
