@@ -102,8 +102,6 @@ abstract class DataContainer
                 }, $item);
             }
 
-            if (is_bool($item)) return $item ? "Y" : "N";
-
             return $item;
         }, $this->fields);
     }
