@@ -29,6 +29,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  * @property integer giata Giata hotel code
  * @property float totalSellingRate
  * @property float totalNet
+ * @property array creditCards List of creditCards available for a particular hotel
  */
 class Hotel extends ApiModel
 {
@@ -52,7 +53,8 @@ class Hotel extends ApiModel
              "currency" => "string",
              "maxRate" => "float",
              "minRate" => "float",
-             "giata" => "integer"
+             "giata" => "integer",
+             "creditCards" => "array"
             ];
 
         if ($data !== null)
@@ -70,5 +72,15 @@ class Hotel extends ApiModel
         if ($this->rooms !== null)
             return new RoomIterator($this->rooms);
         return new RoomIterator([]);
+    }
+
+    /**
+     * @return CreditCardIterator For iterate creditCard list
+     */
+    public function creditCardsIterator()
+    {
+        if ($this->creditCards !== null)
+            return new CreditCardIterator($this->creditCards);
+        return new CreditCardIterator([]);
     }
 }
