@@ -23,6 +23,7 @@ use hotelbeds\hotel_api_sdk\model\Stay;
  * @property string $sourceMarket Hotelbeds Group client source market
  * @property boolean $dailyRate Display the rate day by day
  * @property string $language Language of the response
+ * @property Filter $filter Filters for availability
  */
 
 class Availability extends ApiHelper
@@ -42,7 +43,8 @@ class Availability extends ApiHelper
                 "board" => "string",
                 "sourceMarket" => "string",
                 "dailyRate" => "boolean",
-                "language" => "string"
+                "language" => "string",
+                "filter" => "hotelbeds\\hotel_api_sdk\\model\\Filter"
                 ];
     }
 }
