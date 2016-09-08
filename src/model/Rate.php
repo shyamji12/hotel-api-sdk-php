@@ -35,6 +35,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  * @property array cancellationPolicies List of cancellation policies
  * @property array taxes List of taxes
  * @property array promotions List of promotions
+ * @property array dailyRates List of daily rates
  */
 
 class Rate extends ApiModel
@@ -67,7 +68,8 @@ class Rate extends ApiModel
              "childrenAges" => "string",
              "cancellationPolicies" => "array",
              "taxes" => "array",
-             "promotions" => "array"];
+             "promotions" => "array",
+             "dailyRates" => "array"];
 
         if ($data !== null)
         {
@@ -86,6 +88,19 @@ class Rate extends ApiModel
             return new CancellationPoliciesIterator($this->cancellationPolicies);
         return new CancellationPoliciesIterator([]);
     }
+
+    /**
+     * Get dailyrates iterator for iterate all daily rates with models classes
+     *
+     * @return DailyRatesIterator Return daily rates iterator
+     */
+    public function dailyRatesIterator()
+    {
+        if ($this->dailyRates !== null)
+            return new DailyRatesIterator($this->dailyRates);
+        return new DailyRatesIterator([]);
+    }
+
 
     /**
      * @return Taxes Return taxes class and list of all taxes
