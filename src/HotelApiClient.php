@@ -90,17 +90,20 @@ class HotelApiClient
      * @param string $sharedSecret Shared secret
      * @param ApiVersion $version Version of HotelAPI Interface
      * @param int $timeout HTTP Client timeout
+     * @param string $adapter Customize adapter for http request
      */
-    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30)
+    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30, $adapter=null)
     {
         $this->lastRequest = null;
-
         $this->apiKey = trim($apiKey);
         $this->sharedSecret = trim($sharedSecret);
-
         $this->httpClient = new Client();
-        $this->httpClient->setOptions(["timeout" => $timeout]);
-
+        if($adapter!=null) {
+            $this->httpClient->setOptions(["adapter" => $adapter,
+                "timeout" => $timeout]);
+        }else{
+            $this->httpClient->setOptions(["timeout" => $timeout]);
+        }
         UriFactory::registerScheme("https","hotelbeds\\hotel_api_sdk\\types\\ApiUri");
         $this->apiUri = UriFactory::factory($url);
         $this->apiUri->prepare($version);
