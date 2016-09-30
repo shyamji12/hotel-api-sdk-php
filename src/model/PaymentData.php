@@ -11,6 +11,9 @@ namespace hotelbeds\hotel_api_sdk\model;
 /**
  * Class PaymentData
  * @package hotelbeds\hotel_api_sdk\model
+ * 
+ * @property array paymentCard Payment Card info
+ * @property array contactData ContractData
  */
 class PaymentData extends ApiModel
 {
