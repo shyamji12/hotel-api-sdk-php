@@ -162,7 +162,7 @@ class HotelApiClient
             throw new HotelSDKException($response->getReasonPhrase().': '.$message, $auditData);
         }
 
-        return \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
+        return \Zend\Json\Json::decode(mb_convert_encoding($response->getBody(),'UTF-8'), \Zend\Json\Json::TYPE_ARRAY);
     }
 
     /**
