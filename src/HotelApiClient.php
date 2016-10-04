@@ -154,7 +154,7 @@ class HotelApiClient
                try {
                    $errorResponse = \Zend\Json\Json::decode($response->getBody(), \Zend\Json\Json::TYPE_ARRAY);
                    $auditData = new AuditData($errorResponse["auditData"]);
-                   $message = $errorResponse["error"]["message"];
+                   $message =$errorResponse["error"]["code"].' '.$errorResponse["error"]["message"];
                } catch (\Exception $e) {
                    throw new HotelSDKException($response->getReasonPhrase().': '.$response->getBody());
                }

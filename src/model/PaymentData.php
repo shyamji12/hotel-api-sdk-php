@@ -7,21 +7,22 @@
  */
 
 namespace hotelbeds\hotel_api_sdk\model;
+use hotelbeds\hotel_api_sdk\model\PaymentCard;
+use hotelbeds\hotel_api_sdk\model\ContractData;
 
 /**
  * Class PaymentData
  * @package hotelbeds\hotel_api_sdk\model
- * 
- * @property array paymentCard Payment Card info
- * @property array contactData ContractData
+ * @property PaymentCard paymentCard Payment Card info
+ * @property ContractData contactData ContractData
  */
 class PaymentData extends ApiModel
 {
     public function __construct()
     {
         $this->validFields = [
-            "paymentCard" => "array",
-            "contactData" => "array"
+            "paymentCard" => "hotelbeds\\hotel_api_sdk\\model\\PaymentCard",
+            "contactData" => "hotelbeds\\hotel_api_sdk\\model\\ContractData"
         ];
     }
 }
