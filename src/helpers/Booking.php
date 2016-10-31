@@ -19,6 +19,8 @@ use hotelbeds\hotel_api_sdk\model\PaymentData;
  * @property string clientReference Your internal booking reference or comments
  * @property PaymentData paymentData Payment information. This node must be used if paymentType = 'AT_HOTEL'
  * @property string language Response language 
+ * @property string remark Client remark
+ * @property string platform Platform
  */
 class Booking extends ApiHelper
 {
@@ -29,7 +31,9 @@ class Booking extends ApiHelper
             "holder" => "hotelbeds\\hotel_api_sdk\\model\\Holder",
             "rooms" => "array",
             "clientReference" => "string",
-            "paymentData" => "hotelbeds\\hotel_api_sdk\\model\\PaymentData"
+            "paymentData" => "hotelbeds\\hotel_api_sdk\\model\\PaymentData",
+        	"remark" => "string",
+        	"platform" => "integer"
         ];
     }
 }
