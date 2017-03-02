@@ -21,6 +21,7 @@ namespace hotelbeds\hotel_api_sdk\model;
  * @property float comissionVAT Vat comission
  * @property float comissionPCT Percentage of the comission
  * @property integer rateCommentsId Rate comment id. Using the commentContract function a description is returned
+ * @property array rateComments List of rate comments
  * @property string paymentType To identify if it is pay at hotel or merchant
  * @property string packaging Identifies if the rate is for packaging
  * @property string boardCode Internal board code
@@ -55,6 +56,7 @@ class Rate extends ApiModel
              "comissionVAT" => "float",
              "comissionPCT" => "float",
              "rateCommentsId" => "integer",
+             "rateComments" => "array",
              "paymentType" => "string",
              "packaging" => "string",
              "boardCode" => "string",
