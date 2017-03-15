@@ -39,6 +39,7 @@ use hotelbeds\hotel_api_sdk\helpers\BookingList;
 
 use hotelbeds\hotel_api_sdk\model\AuditData;
 use hotelbeds\hotel_api_sdk\types\ApiVersion;
+use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\types\HotelSDKException;
 use hotelbeds\hotel_api_sdk\messages\ApiRequest;
 
@@ -62,6 +63,11 @@ class HotelApiClient
      * @var ApiUri Well formatted URI of service
      */
     private $apiUri;
+    
+    /**
+     * @var ApiUri Well formatted URI of service for payments
+     */
+    private $apiPaymentUri;
 
     /**
      * @var string Stores locally client api key
@@ -82,6 +88,7 @@ class HotelApiClient
      * @var Request Last sent request
      */
     private $lastRequest;
+    
 
     /**
      * HotelApiClient Constructor they initialize SDK Client.
@@ -92,21 +99,31 @@ class HotelApiClient
      * @param int $timeout HTTP Client timeout
      * @param string $adapter Customize adapter for http request
      */
-    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30, $adapter=null)
+    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30, $adapter=null, ApiVersion $paymentVersion=null)
     {
         $this->lastRequest = null;
         $this->apiKey = trim($apiKey);
         $this->sharedSecret = trim($sharedSecret);
         $this->httpClient = new Client();
         if($adapter!=null) {
-            $this->httpClient->setOptions(["adapter" => $adapter,
-                "timeout" => $timeout]);
+            $this->httpClient->setOptions([
+            		"adapter" => $adapter,
+            		"timeout" => $timeout
+            ]);
         }else{
-            $this->httpClient->setOptions(["timeout" => $timeout]);
+            $this->httpClient->setOptions([
+            		"timeout" => $timeout
+            ]);
         }
         UriFactory::registerScheme("https","hotelbeds\\hotel_api_sdk\\types\\ApiUri");
         $this->apiUri = UriFactory::factory($url);
         $this->apiUri->prepare($version);
+        $this->apiPaymentUri = UriFactory::factory($url);
+        if($paymentVersion==null){
+        	$this->apiPaymentUri->prepare(new ApiVersion( ApiVersions::V1_1 ));
+        }else{
+       		$this->apiPaymentUri->prepare($paymentVersion);
+        } 	
     }
 
     /**
@@ -121,13 +138,18 @@ class HotelApiClient
         $sdkClassRQ = "hotelbeds\\hotel_api_sdk\\messages\\".$sdkMethod."RQ";
         $sdkClassRS = "hotelbeds\\hotel_api_sdk\\messages\\".$sdkMethod."RS";
 
-        if (!class_exists($sdkClassRQ) && !class_exists($sdkClassRS))
+        if (!class_exists($sdkClassRQ) && !class_exists($sdkClassRS)){
             throw new HotelSDKException("$sdkClassRQ or $sdkClassRS not implemented in SDK");
-
-        if ($args !== null && count($args) > 0)
-            $req = new $sdkClassRQ($this->apiUri, $args[0]);
-        else $req = new $sdkClassRQ($this->apiUri);
-
+        }
+        if($sdkClassRQ == "hotelbeds\\hotel_api_sdk\\messages\\BookingConfirmRQ"){
+        	$req = new $sdkClassRQ($this->apiUri, $this->apiPaymentUri, $args[0]);
+        }else{
+	        if ($args !== null && count($args) > 0){
+	            $req = new $sdkClassRQ($this->apiUri, $args[0]);
+	        } else {
+	        	$req = new $sdkClassRQ($this->apiUri);
+	        }
+        }
         return new $sdkClassRS($this->callApi($req));
     }
 

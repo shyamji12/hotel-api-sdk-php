@@ -14,7 +14,8 @@ namespace hotelbeds\hotel_api_sdk\types;
  */
 interface ApiVersions {
     const V0_2="0.2";
-    const V1_0="1.0";
+    const V1_0="1.0";//Default version
+    const V1_1="1.1";//Default version for confirmation with payment
 
     public function __construct($version);
     public function getVersion();
