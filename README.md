@@ -85,7 +85,7 @@ use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 
 $reader = new Zend\Config\Reader\Ini();
-$config   = $reader->fromFile(__DIR__.'/HotelApiClient.ini');
+$config   = $reader->fromFile(__DIR__.'/config/Common.ini');
 $cfgApi = $config["apiclient"];
         
 $apiClient = new HotelApiClient($cfgApi["url"],

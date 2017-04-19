@@ -98,8 +98,9 @@ class HotelApiClient
      * @param ApiVersion $version Version of HotelAPI Interface
      * @param int $timeout HTTP Client timeout
      * @param string $adapter Customize adapter for http request
+     * @param string $secureUrl Customize Base URL of hotel-api secure service.
      */
-    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30, $adapter=null, ApiVersion $paymentVersion=null)
+    public function __construct($url, $apiKey, $sharedSecret, ApiVersion $version, $timeout=30, $adapter=null, $secureUrl=null)
     {
         $this->lastRequest = null;
         $this->apiKey = trim($apiKey);
@@ -118,12 +119,8 @@ class HotelApiClient
         UriFactory::registerScheme("https","hotelbeds\\hotel_api_sdk\\types\\ApiUri");
         $this->apiUri = UriFactory::factory($url);
         $this->apiUri->prepare($version);
-        $this->apiPaymentUri = UriFactory::factory($url);
-        if($paymentVersion==null){
-        	$this->apiPaymentUri->prepare(new ApiVersion( ApiVersions::V1_1 ));
-        }else{
-       		$this->apiPaymentUri->prepare($paymentVersion);
-        } 	
+        $this->apiPaymentUri = UriFactory::factory($secureUrl?$secureUrl:$url);
+        $this->apiUri->prepare($version);
     }
 
     /**
