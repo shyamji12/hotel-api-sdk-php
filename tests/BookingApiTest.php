@@ -34,13 +34,10 @@ class BookingApiTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $reader = new Zend\Config\Reader\Ini();
-        $commonConfig   = $reader->fromFile(__DIR__ . '/config/Common.ini');
-        $currentEnvironment = $commonConfig["environment"]? $commonConfig["environment"]: "DEFAULT";
-        $environmentConfig   = $reader->fromFile(__DIR__ . '/config/Environment.' . strtoupper($currentEnvironment) . '.ini');
-        $cfgApi = $commonConfig["apiclient"];
-        $cfgUrl = $environmentConfig["url"];
+        $config   = $reader->fromFile(__DIR__.'/HotelApiClient.ini');
+        $cfgApi = $config["apiclient"];
 
-        $this->apiClient = new HotelApiClient($cfgUrl["default"],
+        $this->apiClient = new HotelApiClient($cfgApi["url"],
             $cfgApi["apikey"],
             $cfgApi["sharedsecret"],
             new ApiVersion(ApiVersions::V1_0),
