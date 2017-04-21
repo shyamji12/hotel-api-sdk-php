@@ -20,7 +20,8 @@ class BookingConfirmRQ extends ApiRequest
 {
     /**
      * BookingConfirmRQ constructor.
-     * @param ApiUri $baseUri
+     * @param ApiUri $baseUri Base uri when the request does not include payment data
+     * @param ApiUri $basePaymentUri Base uri when the request does include payment data
      * @param Booking $bookingDataRQ
      */
     public function __construct(ApiUri $baseUri, ApiUri $basePaymentUri, Booking $bookingDataRQ)
