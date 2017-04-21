@@ -85,18 +85,23 @@ use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\messages\AvailabilityRS;
 
 $reader = new Zend\Config\Reader\Ini();
-$config   = $reader->fromFile(__DIR__.'/config/Common.ini');
-$cfgApi = $config["apiclient"];
-        
-$apiClient = new HotelApiClient($cfgApi["url"],
-                                $cfgApi["apikey"],
-                                $cfgApi["sharedsecret"],
-                                new ApiVersion(ApiVersions::V1_0),
-                                $cfgApi["timeout"]);
+$commonConfig   = $reader->fromFile(__DIR__ . '\config\Common.ini');
+$currentEnvironment = $commonConfig["environment"]? $commonConfig["environment"]: "DEFAULT";
+$environmentConfig   = $reader->fromFile(__DIR__ . '\config\Environment.' . strtoupper($currentEnvironment) . '.ini');
+$cfgApi = $commonConfig["apiclient"];
+$cfgUrl = $environmentConfig["url"];
+
+$this->apiClient = new HotelApiClient($cfgUrl["default"],
+    $cfgApi["apikey"],
+    $cfgApi["sharedsecret"],
+    new ApiVersion(ApiVersions::V1_0),
+    $cfgApi["timeout"],
+    null,
+    $cfgUrl["secure"]);
 
 $rqData = new \hotelbeds\hotel_api_sdk\helpers\Availability();
-$rqData->stay = new Stay(DateTime::createFromFormat("Y-m-d", "2016-02-01"),
-                         DateTime::createFromFormat("Y-m-d", "2016-02-10"));
+$rqData->stay = new Stay(DateTime::createFromFormat("Y-m-d", "2018-02-01"),
+                         DateTime::createFromFormat("Y-m-d", "2018-02-10"));
 
 $rqData->destination = new Destination("PMI");
 $occupancy = new Occupancy();

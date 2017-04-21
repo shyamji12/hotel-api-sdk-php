@@ -120,7 +120,7 @@ class HotelApiClient
         $this->apiUri = UriFactory::factory($url);
         $this->apiUri->prepare($version);
         $this->apiPaymentUri = UriFactory::factory($secureUrl?$secureUrl:$url);
-        $this->apiUri->prepare($version);
+        $this->apiPaymentUri->prepare($version);
     }
 
     /**
