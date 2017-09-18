@@ -42,7 +42,7 @@ $occupancy->rooms = 1;
 
 $occupancy->paxes = [ new Pax(Pax::AD, 30, "Mike", "Doe"), new Pax(Pax::AD, 27, "Jane", "Doe"), new Pax(Pax::CH, 8, "Mack", "Doe") ];
 //$occupancy->paxes = [ new Pax(Pax::AD, 30, "Mike", "Doe", 1) ];
-//$occupancy->paxes = [ ];
+
 
 $rqData->occupancies = [ $occupancy ];
 
@@ -60,8 +60,6 @@ try {
 
 // Check availability is empty or not!
 if (!$availRS->isEmpty()) {
-    //var_dump($rqData->occupancies); //Array dump of the Request
-    //var_dump($availRS->hotels->toArray()); //Array dump of the hotels Response
     echo"
     <style>
     table {border-collapse:collapse; table-layout:fixed; width:410px;}
@@ -97,13 +95,10 @@ if (!$availRS->isEmpty()) {
                 echo '<td>'.$roomData->name.'</td>';
                 echo '<td>'.$rateData->net.'</td>';
                 echo '<td>'.$rateData->rateType.'</td>';
-                //$rateKey = str_replace(PHP_EOL, '', $rateData->rateKey);
                 if ($rateData->rateType == 'BOOKABLE')
-                    //echo '<td>"'.$rateData->rateKey.'"</td>';
                     echo "<td><a href=booking.php?ratekey=" .urlencode($rateData->rateKey). ">$rateData->rateKey</a></td>";
                 else
                     echo "<td><a href=recheck.php?ratekey=" .urlencode($rateData->rateKey). ">$rateData->rateKey</a></td>";
-                    //echo '<td>'.$rateData->rateKey.'</td>';
                 echo "</tr>";
             }
         }
