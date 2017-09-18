@@ -7,7 +7,7 @@
  */
 
 
-require __DIR__ .'/vendor/autoload.php';
+require __DIR__ .'/../vendor/autoload.php';
 
 use hotelbeds\hotel_api_sdk\HotelApiClient;
 use hotelbeds\hotel_api_sdk\model\Destination;
