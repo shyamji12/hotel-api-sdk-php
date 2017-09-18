@@ -27,11 +27,10 @@ $cfgApi = $config["apiclient"];
 $apiClient = new HotelApiClient($cfgApi["url"],
     $cfgApi["apikey"],
     $cfgApi["sharedsecret"],
-    new ApiVersion(ApiVersions::V1_2),
-    $cfgApi["timeout"]);
+    new ApiVersion(ApiVersions::V1_2), 
+    $cfgApi["timeout"]); //Make sure you use 1.2 for no CC details and 1.0 version for CC details w/ secure URL.
 
 $rateKey = urldecode($_GET['ratekey']);
-
 //$rateKey = "20171115|20171120|W|1|1075|TPL.VM|CG-TODOS BB|BB||1~2~1|8|N@5897F2A3FEF5401B8A86C4A57DD34DD91542";
 
 //$paxes = [ new Pax(Pax::AD, 30, "Miquel", "Fiol",1), new Pax(Pax::AD, 27, "Margalida", "Soberats",1), new Pax(Pax::CH, 8, "Josep", "Fiol",1) ];
@@ -84,9 +83,6 @@ try {
 } catch (\hotelbeds\hotel_api_sdk\types\HotelSDKException $e) {
     echo "\n".$e->getMessage()."\n";
     echo "<br><br>".$apiClient->getLastRequest();
-    //echo $apiClient->getLastRequest()->getContent();
-    //echo "\n".$this->apiClient->getLastRequest()->getContent()."\n";
-    //$this->fail($e->getMessage());
 }
 
 return null;
