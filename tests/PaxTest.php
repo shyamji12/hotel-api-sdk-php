@@ -2,7 +2,7 @@
 
 use hotelbeds\hotel_api_sdk\model\Pax;
 
-class PaxTest extends PHPUnit_Framework_TestCase
+class PaxTest extends PHPUnit\Framework\TestCase
 {
     private $pax;
     protected function setUp()

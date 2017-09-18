@@ -24,7 +24,9 @@ class Booking extends ApiModel
         $this->validFields = [
             "reference" => "string",
             "creationDate" => "string",
-            "totalAmount" => "float",
+            "totalNet" => "float",
+            "totalSellingRate" => "float",
+            "totalPending" => "float",
             "currency" => "string",
             "status" => "string",
             "holder" => "array",

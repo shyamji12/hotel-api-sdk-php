@@ -27,7 +27,7 @@ use hotelbeds\hotel_api_sdk\types\ApiVersion;
 use hotelbeds\hotel_api_sdk\types\ApiVersions;
 use hotelbeds\hotel_api_sdk\messages\BookingListRS;
 
-class BookingApiTest extends PHPUnit_Framework_TestCase
+class BookingApiTest extends PHPUnit\Framework\TestCase
 {
     private $apiClient;
 

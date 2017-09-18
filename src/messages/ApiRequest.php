@@ -71,7 +71,7 @@ abstract class ApiRequest implements ApiCallTypes
             'X-Signature' => $signature,
             'Accept' => 'application/json',
             'Accept-Charset' => 'utf-8',
-        	'Accept-Enconding' => 'gzip, deflate'
+        	'Accept-Encoding' => 'gzip, deflate'
         ]);
 
         if (!empty($this->dataRQ)) {

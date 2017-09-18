@@ -3,7 +3,7 @@
 use \hotelbeds\hotel_api_sdk\model\Occupancy;
 use \hotelbeds\hotel_api_sdk\model\Pax;
 
-class OccupancyTest extends PHPUnit_Framework_TestCase
+class OccupancyTest extends PHPUnit\Framework\TestCase
 {
     private $occupancy;
     protected function setUp()

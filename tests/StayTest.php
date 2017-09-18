@@ -7,7 +7,7 @@
  * Time: 9:41 PM
  */
 
-class StayTest extends PHPUnit_Framework_TestCase
+class StayTest extends PHPUnit\Framework\TestCase
 {
     private $stay;
     protected function setUp()
