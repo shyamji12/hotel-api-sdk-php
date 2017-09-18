@@ -29,18 +29,11 @@ $apiClient = new HotelApiClient($cfgApi["url"],
     new ApiVersion(ApiVersions::V1_0),
     $cfgApi["timeout"]);
 
-//var_dump($availRS->hotels->toArray());
-
 $rateKey = urldecode($_GET['ratekey']);
-$rateKey = "20171115|20171120|W|1|1067|DBL.PI-VM|ID_B2B_24|RO|P02I|1~2~1|8|N@FC8ABF2716F445EAA624F87178024F011011";
+//$rateKey = "20171115|20171120|W|1|1067|DBL.PI-VM|ID_B2B_24|RO|P02I|1~2~1|8|N@FC8ABF2716F445EAA624F87178024F011011";
 
 $rqCheckRate = new \hotelbeds\hotel_api_sdk\helpers\CheckRate();
-
 $rqCheckRate->rooms = [ [ "rateKey" => $rateKey ] ];
-
-//$rate= new \hotelbeds\hotel_api_sdk\model\Rate();
-//$rate->rateKey = "20170915|20170920|W|1|271|DBL.ST|ID_B2B_24|FB|CLGI|1~1~0||N@44068BE173A94FAE8ECD1431A08F3B781316";
-
 
 try {
     $CheckRateRS = $apiClient->CheckRate($rqCheckRate);
@@ -68,19 +61,13 @@ try {
     foreach ($CheckRateRS->hotel->iterator() as $hotelCode => $hotelData) {
 
         foreach ($hotelData->rateiterator() as $roomCode => $roomData) {
-
-            //foreach ($roomData->rateIterator() as $rateKey => $rateData) {
                 echo "<tr>";
-                //echo '<td>'.$roomData->$rateKey .'</td>';
                 echo '<td>'.$hotelData->code .'</td>';
                 echo '<td>'.$hotelData->name .'</td>';
-                //echo '<td>'.$roomData->rateKey.'</td>';
                 echo '<td>'.$roomData->net.'</td>';
                 echo '<td>'.$roomData->rateComments.'</td>';
-                //echo '<td>'.$rateData->rateType.'</td>';
                 echo "<td><a href=booking.php?ratekey=" .urlencode($roomData->rateKey). ">$roomData->rateKey</a></td>";
                 echo "</tr>";
-            //}
         }
     };
     echo '</table><br><br>';
@@ -97,19 +84,3 @@ try {
     error_log( $e->getMessage() );
     exit();
 }
-
-/*
-// Check checkrateRS is empty or not!
-if (!$CheckRateRS->isEmpty()) {
-} else {
-    echo "There are no results!";
-}
-*/
-
-/*
-try {
-    var_dump($CheckRateRS->hotel->toArray());
-}catch(Exception $e){
-    print_r( $e->getMessage() );
-}
-*/
